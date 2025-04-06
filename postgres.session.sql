@@ -46,6 +46,7 @@ SELECT table_name
 FROM information_schema.tables
 WHERE table_schema = 'public';
 
+-- nowa tabela zawierająca dane z całego 2025 roku 
 CREATE TABLE ROK25 AS
 SELECT * FROM styczen
 UNION ALL
@@ -54,7 +55,17 @@ SELECT * FROM luty;
 SELECT*
 FROM ROK25;
 
+-- nowa tabela zawierająca informacje o markach pojazdów
 CREATE TABLE MARKI AS
 SELECT DISTINCT MARKA 
 FROM ROK25
 ORDER BY marka;
+
+-- nowa tabela zawierająca informacje o województwach 
+CREATE TABLE WOJEWODZTWA AS
+SELECT DISTINCT WOJEWODZTWO 
+FROM ROK25
+ORDER BY WOJEWODZTWO;
+
+SELECT*
+FROM wojewodztwa;
